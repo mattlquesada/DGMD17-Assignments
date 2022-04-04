@@ -2,7 +2,7 @@
 
 import rospy # Python library for ROS
 from std_msgs.msg import String, UInt16 # String and Unsigned integer message types
-from geometry_msgs.msg import Point # Point (x, y, z) message type
+from geometry_msgs.msg import Point # Point (x, y, z) message type; used for coordinate points in the camera frame
 import RPi.GPIO as GPIO # Raspberry i GPIO library
 
 # Set the GPIO mode
@@ -19,7 +19,7 @@ motor_right_bw_pin = 7
 pwm_freq = 2000 # Use between 2000 - 20000
 
 # PWM % duty cycle (change these to the values that work best for you)
-fw_bw_duty_cycle = 60
+fw_bw_duty_cycle = 60   # some percentage of the voltage of the pwm device
 turn_duty_cycle  = 40
 
 # Set the GPIO Pin mode to output

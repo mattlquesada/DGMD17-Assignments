@@ -60,7 +60,7 @@ def detect_target():
   # To convert between OpenCV and ROS images
   bridge = CvBridge()
  
-  # While ROS is still running.
+  # While ROS is still running.    ### THIS IS THE MAIN LOOP
   while not rospy.is_shutdown():
       start_time = time.time()
 
