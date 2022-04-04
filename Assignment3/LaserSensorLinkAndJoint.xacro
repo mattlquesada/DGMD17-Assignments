@@ -1,7 +1,7 @@
 <!--Laser Joint -->
 <joint name="laser_joint" type="fixed">
 	<axis xyz="0 1 0" />
-	<origin xyz="0.2 0 0.2" rpy="0 0 0" />
+	<origin xyz="0.075 0 0.2" rpy="0 0 0" />
 	<parent link="base_link" />
 	<child link="laser_link" />
 </joint>
@@ -11,16 +11,16 @@
 	<collision>
 		<origin xyz="0 0 0" rpy="0 0 0" />
 		<geometry>
-			<box size="0.1 0.1 0.1" />
+			<box size="0.025 0.025 0.025" />
 		</geometry>
 	</collision>
 
 	<visual>
 		<origin xyz="0 0 0" rpy="0 0 0" />
 		<geometry>
-			<box size="0.1 0.1 0.1" />
+			<box size="0.025 0.025 0.025" />
 		</geometry>
 	</visual>
 
-	<xacro:box_inertia m="1" w="0.1" h="0.1" d="0.1" />
+	<xacro:box_inertia m="1" w="0.025" h="0.025" d="0.025" />
 </link>
