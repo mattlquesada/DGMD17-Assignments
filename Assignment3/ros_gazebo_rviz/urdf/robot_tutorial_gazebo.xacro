@@ -22,10 +22,10 @@
     <material>Gazebo/White</material> 
   </gazebo> 
   <gazebo reference="left_wheel"> 
-    <material>Gazebo/Red</material> 
+    <material>Gazebo/Green</material>
   </gazebo> 
   <gazebo reference="right_wheel"> 
-    <material>Gazebo/Red</material> 
+    <material>Gazebo/Green</material>
   </gazebo> 
   
 </robot>
