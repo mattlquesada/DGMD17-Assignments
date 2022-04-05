@@ -150,8 +150,6 @@
       <child link="laser_link" />
   </joint>
 
-  <xacro:include filename="$(find ros_101_gazebo_rviz)/urdf/robot_tutorial_gazebo.xacro"/>
-
   <!--Laser Link -->
   <link name="laser_link">
       <collision>
@@ -171,6 +169,6 @@
       <xacro:box_inertia m="1" w="0.025" h="0.025" d="0.025" />
   </link>
 
-
+  <xacro:include filename="$(find ros_101_gazebo_rviz)/urdf/robot_tutorial_gazebo.xacro"/>
 
 </robot>
