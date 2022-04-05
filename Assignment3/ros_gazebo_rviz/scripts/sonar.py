@@ -16,10 +16,10 @@ def callback(data):
     range_msg.header.stamp = rospy.Time.now()
     range_msg.header.frame_id = data.header.frame_id
     range_msg.radiation_type = Range.ULTRASOUND
-    range_msg.field_of_view = 0.0698132
+    range_msg.field_of_view = 0.7819076
     range_msg.min_range = 0.1
     range_msg.max_range = 30.0
-    range_msg.range = min(data.ranges)
+    range_msg.range = data.ranges.index(min(data.ranges))
     pub.publish(range_msg)
 
 
