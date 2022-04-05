@@ -11,8 +11,15 @@ pub = rospy.Publisher(pub_topic, Range, queue_size=10)
 
 
 def callback(data):
-    rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.ranges[0])
+
     range_msg = Range()
+    range_msg.min_index = data.ranges.index(min(data.ranges))
+    rospy.loginfo(rospy.get_caller_id() + "I heard indx: {}, distance: {}".format(min_index, data.ranges[min_index]))
+    if data.ranges[range_msg.min_index] < 30:
+        rospy.loginfo("object detected")
+    else:
+        rospy.loginfo("no object detected")
+
     range_msg.header.stamp = rospy.Time.now()
     range_msg.header.frame_id = data.header.frame_id
     range_msg.radiation_type = Range.ULTRASOUND
