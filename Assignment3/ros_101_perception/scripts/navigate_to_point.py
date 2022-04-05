@@ -173,12 +173,13 @@ class NavigateAvoid():
             self.pub_avoid.publish(self._message_avoid)
             
             rate.sleep()        
-            
+
+
 if __name__ == "__main__":
 
     rospy.init_node('navigate_avoid')
     
-    navigate_avoid     = NavigateAvoid()
+    navigate_avoid = NavigateAvoid()
     navigate_avoid.run()            
     
     
