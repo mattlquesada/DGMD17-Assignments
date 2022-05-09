@@ -1,0 +1,12 @@
+
+# Gazebo Startup + PX4_SITL startup
+cd ~/src/Firmware
+make px4_sitl gazebo
+
+# Run QGroundControl
+cd
+./QGroundControl.AppImage
+
+# Run the track and follow python file
+cd
+python3 ./track_and_follow.py

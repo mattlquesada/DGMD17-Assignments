@@ -18,7 +18,7 @@ to my previous "Circuit Cellar" article "Quadrotor Autonomous Flight with PX4 an
 import asyncio
 import cv2
 from mavsdk import System
-from mavsdk import (OffboardError, PositionNedYaw)
+from mavsdk.offboard import (OffboardError, PositionNedYaw)
 
 # Constants
 PERCENT_CENTER_RECT  = 0.20 # For calculating the center rectangle's size
@@ -77,7 +77,7 @@ async def run():
     print("Waiting for drone to connect...")
     async for state in drone.core.connection_state():
         if state.is_connected:
-            print(f"Drone discovered with UUID: {state.uuid}")
+            print(f"Drone discovered")
             break
 
     # Activate the drone motors
@@ -246,7 +246,7 @@ async def get_target_coordinates(vid_cam):
     mask = cv2.dilate(mask, None, iterations=3)
 
     # Find all contours in the masked image
-    _, contours, _ = cv2.findContours(mask, 
+    contours, _ = cv2.findContours(mask,
             cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     # Centroid coordinates to be returned:
