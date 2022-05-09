@@ -18,7 +18,7 @@ to my previous "Circuit Cellar" article "Quadrotor Autonomous Flight with PX4 an
 import asyncio
 import cv2
 from mavsdk import System
-from mavsdk.offboard import (OffboardError, PositionNedYaw)
+from mavsdk.offboard import (OffboardError, PositionNEDYaw)
 
 # Constants
 PERCENT_CENTER_RECT  = 0.20 # For calculating the center rectangle's size
@@ -86,7 +86,7 @@ async def run():
 
     # Send an initial position to the drone before changing to "offboard" flight mode
     print("-- Setting initial setpoint")
-    await drone.offboard.set_position_ned(PositionNedYaw(0.0, 0.0, 0.0, 0.0))
+    await drone.offboard.set_position_ned(PositionNEDYaw(0.0, 0.0, 0.0, 0.0))
 
     # Change flight mode to "offboard", if it fails, disarm the motors and abort the script
     print("-- Starting offboard")
@@ -106,7 +106,7 @@ async def run():
 
     # Make the drone go (take off) to the default pose
     await drone.offboard.set_position_ned(
-        PositionNedYaw(N_coord, E_coord, D_coord, yaw_angle))
+        PositionNEDYaw(N_coord, E_coord, D_coord, yaw_angle))
     await asyncio.sleep(4) # Give the drone time to gain altitude
 
     # Infinite detect-follow loop
@@ -152,7 +152,7 @@ async def run():
         print("E_coord : {}".format(E_coord))
         print("N_coord : {}".format(N_coord))
         await drone.offboard.set_position_ned(
-            PositionNedYaw(N_coord, E_coord, D_coord, yaw_angle))
+            PositionNEDYaw(N_coord, E_coord, D_coord, yaw_angle))
 
         # Draw objects over the detection image frame just for visualization
         frame = await draw_objects(tgt_cam_coord, tgt_filt_cam_coord, frame, contour)
