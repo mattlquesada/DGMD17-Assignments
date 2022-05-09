@@ -131,6 +131,10 @@ async def run():
         tgt_cart_coord = {'x':(tgt_filt_cam_coord['width'] - params['y_ax_pos']),
                           'y':(params['x_ax_pos'] - tgt_filt_cam_coord['height'])}
 
+
+        print("TARGET COORDINATES: x: {} y: {}".format(tgt_cart_coord['x'], tgt_cart_coord['y']))
+
+
         # Compute scaling conversion factor from camera coordinates in pixel units
         # to Cartesian coordinates in meters
         COORD_SYS_CONV_FACTOR = 0.1
@@ -138,12 +142,15 @@ async def run():
         # If the target is outside the center rectangle, compute North and East coordinates 
         if abs(tgt_cart_coord['x']) > params['cent_rect_half_width'] or \
         abs(tgt_cart_coord['y']) > params['cent_rect_half_height']:
+            print("DETECTED OUTSIDE RECTANGLE")
             # Compute North, East coordinates applying "camera pixel" to Cartesian conversion factor
             E_coord = tgt_cart_coord['x'] * COORD_SYS_CONV_FACTOR
             N_coord = tgt_cart_coord['y'] * COORD_SYS_CONV_FACTOR
             # D_coord, yaw_angle don't change
 
         # Command the drone to the current NED + Yaw pose
+        print("E_coord : {}".format(E_coord))
+        print("N_coord : {}".format(N_coord))
         await drone.offboard.set_position_ned(
             PositionNedYaw(N_coord, E_coord, D_coord, yaw_angle))
 
